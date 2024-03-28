@@ -229,7 +229,7 @@ def view_split_scoreboard():
         attr_name = "Team Size is greater than "+str(selected_value)
 	
     # Multiple scoreboards implementation for CSCTF starts here
-    api_handler = CTFdUserCustomFieldChecker("http://127.0.0.1:80")
+    api_handler = CTFdUserCustomFieldChecker("http://127.0.0.1:8000")
     team_user_count = api_handler.fetch_team_members()
     api_handler.analyze_and_display_teams(team_user_count)
 
