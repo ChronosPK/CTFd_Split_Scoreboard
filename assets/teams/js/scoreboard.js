@@ -15,9 +15,9 @@ function colorhash(str) {
 function updatescores () {
   $.get(CTFd.config.urlRoot + '/api/v1/split_scores', function( response ) {
     var teams = $.parseJSON(JSON.stringify(response.data));
-    drawscores('Military', teams);
-    drawscores('Civilian', teams);
-    drawscores('Other', teams);
+    drawscores('matched', teams);
+    drawscores('unmatched', teams);
+    drawscores('custom', teams);
   });
 }
 
@@ -59,7 +59,7 @@ function scoregraph (tab, response) {
         if (Object.keys(places).length === 0 ){
             // Replace spinner
             $('#'+graph_id).html(
-                '<div class="text-center"><h3 class="spinner-error">No solves yet for '+tab+' teams</h3></div>'
+                '<div class="text-center"><h3 class="spinner-error">No solves yet for selected field</h3></div>'
             );
             return;
         }
@@ -126,17 +126,17 @@ function scoregraph (tab, response) {
 function update(){
   updatescores();
   $.get(CTFd.config.urlRoot + '/api/v1/split_scores/top/10', function( response ) {
-	scoregraph('Military', response);
-	scoregraph('Civilian', response);
-	scoregraph('Other', response);
+	scoregraph('matched', response);
+	scoregraph('unmatched', response);
+	scoregraph('custom', response);
   });
 }
 
 setInterval(update, 300000); // Update scores every 5 minutes
 $.get(CTFd.config.urlRoot + '/api/v1/split_scores/top/10', function( response ) {
-	scoregraph('Military', response);  // once for matching teams
-	scoregraph('Civilian', response); // once for non-matching teams
-	scoregraph('Other', response); // once for custom
+	scoregraph('matched', response);  // once for matching teams
+	scoregraph('unmatched', response); // once for non-matching teams
+	scoregraph('custom', response); // once for custom
 });
 
 $('a[id^=tab-]').mouseup(function () {
