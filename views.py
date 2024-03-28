@@ -232,6 +232,9 @@ def view_split_scoreboard():
     api_handler = CTFdUserCustomFieldChecker("http://127.0.0.1:8000")
     team_user_count = api_handler.fetch_team_members()
     api_handler.analyze_and_display_teams(team_user_count)
+    api_handler.civilian_teams = sorted(api_handler.civilian_teams, key=lambda element: element["score"],reverse=True)
+    api_handler.military_teams = sorted(api_handler.military_teams, key=lambda element: element["score"], reverse=True)
+    api_handler.other_teams = sorted(api_handler.other_teams, key=lambda element: element["score"], reverse=True)
 
 
     show_custom = get_config("split_scoreboard_custom")
