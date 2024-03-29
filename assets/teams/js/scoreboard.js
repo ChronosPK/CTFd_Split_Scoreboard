@@ -141,7 +141,7 @@ $.get(CTFd.config.urlRoot + '/api/v1/split_scores/top/10', function( response ) 
 
 $('a[id^=tab-]').mouseup(function () {
 	// wait for tab to change
-		resizeGraphs(5000);
+		resizeGraphs(10000);
 });
 
 function resizeGraphs(timeout){
@@ -154,7 +154,7 @@ function resizeGraphs(timeout){
 }
 
 window.onresize = function () {
-    resizeGraphs(5000);
+    resizeGraphs(10000);
 };
 
 $(function() {
@@ -170,7 +170,7 @@ $(function() {
 		// hash found
 		var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
 		$('a[id=tab-'+hash+']').click();
-		resizeGraphs();
+		resizeGraphs(10000);
 	}
 });
 
