@@ -141,11 +141,11 @@ $.get(CTFd.config.urlRoot + '/api/v1/split_scores/top/10', function( response ) 
 
 $('a[id^=tab-]').mouseup(function () {
 	// wait for tab to change
-		resizeGraphs(100);
+		resizeGraphs(5000);
 });
 
 function resizeGraphs(timeout){
-	timeout = timeout || 100;
+	timeout = timeout || 1000;
 	setTimeout(function(){
 	    Plotly.Plots.resize(document.getElementById('score-graph-matched'));
 	    Plotly.Plots.resize(document.getElementById('score-graph-unmatched'));
@@ -154,7 +154,7 @@ function resizeGraphs(timeout){
 }
 
 window.onresize = function () {
-    resizeGraphs(0);
+    resizeGraphs(5000);
 };
 
 $(function() {
