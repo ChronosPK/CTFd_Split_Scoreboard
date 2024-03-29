@@ -60,7 +60,7 @@ function scoregraph (tab, response) {
             // Replace spinner
             $('#'+graph_id).html(
                 // '<div class="text-center"><h3 class="spinner-error">No solves yet for selected field</h3></div>'
-		'<div class="text-center"><h3 class="spinner-error">Happy hacking!</h3></div>
+		'<div class="text-center"><h3 class="spinner-error">Happy hacking!</h3></div>'
             );
             return;
         }
