@@ -59,7 +59,8 @@ function scoregraph (tab, response) {
         if (Object.keys(places).length === 0 ){
             // Replace spinner
             $('#'+graph_id).html(
-                '<div class="text-center"><h3 class="spinner-error">No solves yet for selected field</h3></div>'
+                // '<div class="text-center"><h3 class="spinner-error">No solves yet for selected field</h3></div>'
+		'<div class="text-center"><h3 class="spinner-error"></h3></div>
             );
             return;
         }
